@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Detalle de Ingreso</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">ingresoModal</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list *ngIf="ingreso">
+    <ion-item>
+      <ion-input label="Cantidad" labelPlacement="stacked" [clearInput]="true" type="number" [(ngModel)]="ingreso.cantidad"  >
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Descripcion" labelPlacement="stacked" [clearInput]="true" type="text"   [(ngModel)]="ingreso.descripcion">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Fecha" labelPlacement="stacked" type="date" [clearInput]="true" [(ngModel)]="ingreso.fecha">
+      </ion-input>
+    </ion-item>
+    <ion-button color="primary" (click)="actualizarIngreso()">
+      <ion-icon slot="icon-only" name="pencil"></ion-icon>
+    </ion-button>
+    <ion-button color="danger" (click)="eliminarIngreso()">
+      <ion-icon slot="icon-only" name="trash"></ion-icon>
+    </ion-button>
+  </ion-list>
+</ion-content>

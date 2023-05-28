@@ -1,0 +1,107 @@
+<!-- <ion-header>
+  <ion-toolbar color="secondary">
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Inicio</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content  class="ion-padding bgContenido" id="contenido">
+ 
+
+  
+  <div class="header">
+    <div>
+      <h1>Bienvenido:  <p>{{this.usuario.email}}</p></h1>
+      <strong></strong>
+    </div>
+
+    <!-- boton para el cierre de sesion -->
+    <ion-button color="light" mode="ios" (click)="cerrarSesion()">
+      <ion-icon slot="icon-only" color="danger" name="log-out"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div class="summary" id="TotalGastos">
+    <strong>Total</strong>
+    <h1 >${{total}}</h1>
+    <ion-skeleton-text *ngIf="!loaded" animated="true"></ion-skeleton-text>
+  </div>
+
+  <br/>
+
+  <div class="summary" id="total">
+    <ion-grid>
+      <ion-row>
+        <ion-col >Ingresos: ${{totalIngreso}} </ion-col>
+        <ion-col>Gastos: ${{totalGasto}} </ion-col>
+      </ion-row>
+      <br/>
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col>Total: ${{total}}</ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-skeleton-text *ngIf="!loaded" animated="true"></ion-skeleton-text>
+  </div>
+  <br>
+
+  <!-- boton para generar el reporte -->
+  <div>
+    <button class="btnReporte" id="btnReporte" (click)="generarPdf()">Descargar Reporte 
+      <ion-icon name="arrow-down-outline"></ion-icon>
+     </button>
+  </div>
+  <br>
+
+<!-- 
+  <ion-list lines="none">
+    <h3>Ingresos con Mayor Cantidad</h3>
+    <ion-item >
+      <ion-label>$</ion-label>
+      <ion-label></ion-label>
+      <ion-label> </ion-label>
+    </ion-item>
+  </ion-list> -->
+
+
+  <!-- <ion-list lines="none">
+    <ion-item *ngFor="let gastom of gastosm">
+      <ion-label>${{gastom.cantidad}}</ion-label>
+      <ion-label>{{gastom.descripcion}}</ion-label>
+      <ion-label>{{gastom.fecha}} </ion-label>
+    </ion-item>
+  </ion-list> -->
+
+  
+
+
+  <br><br>
+  <!-- grafico con chart.js -->
+  <div>
+    <canvas id="myChart"></canvas>
+  </div>
+
+  <!--  -->
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end"  >
+    <ion-fab-button  color="success">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="agregarGasto(gastos)" >
+        <ion-icon color="danger" name="arrow-down-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button id="open-modal" expand="block"  (click)="agregarIngreso(ingresos)">
+        <ion-icon  name="arrow-up-outline" color="success"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button [routerLink]="['/gastosingresos']" >
+        <ion-icon  name="apps-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+  
+
+</ion-content>

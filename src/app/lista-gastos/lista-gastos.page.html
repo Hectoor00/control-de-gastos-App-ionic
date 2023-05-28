@@ -1,0 +1,72 @@
+<ion-header >
+  <ion-toolbar >
+    <ion-buttons >
+      <ion-back-button></ion-back-button>
+  </ion-buttons>
+    <ion-title>Lista de gastos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-list lines="none" >
+    <div class="item">
+      <h3 class="ion-no-margin" slot="start">Cantidad</h3>
+      <p class="ion-no-margin" slot="end">Descripcion</p>
+      <p class="ion-no-margin" slot="secondary">fecha</p>
+      <p class="ion-no-margin" slot="secondary"></p>
+      
+    </div>
+  </ion-list>
+    
+  <ion-list lines="none" >
+    <div class="item" *ngFor="let gasto of gastos" (click)="abrirGasto(gasto)">
+      
+        <h3 class="ion-no-margin" slot="start">${{gasto.cantidad}}</h3>
+        <p class="ion-no-margin" slot="end">{{gasto.descripcion}}</p>
+        <p class="ion-no-margin" slot="secondary">{{gasto.fecha}}</p>
+
+      <ion-buttons>
+        <ion-modal #moda trigger="gasto">
+          <ng-template>
+            <ion-content>
+              <ion-toolbar>
+                <ion-title >Editar Gasto</ion-title>
+                <ion-buttons slot="end">
+                  <ion-button color="light" (click)="moda.dismiss()">Cerrar</ion-button>
+                </ion-buttons>
+              </ion-toolbar>
+              <div class="ion-padding">
+                <h3 class="color-t">Editar gasto</h3>
+              </div>
+              <form class="ion-padding">
+                <ion-list  >
+                  <ion-item>
+                    <ion-icon   slot="start" color="danger" name="arrow-down-outline"></ion-icon>
+                    <ion-input   type="number" labelPlacement="stacked" [clearInput]="true"  required [(ngModel)]="gasto.cantidad" >
+                    </ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-icon name="chatbubble-ellipses-outline" slot="start" color="secondary"></ion-icon>
+
+                    <ion-input  labelPlacement="stacked" [clearInput]="true" type="textarea"  required [(ngModel)]="gasto.descripcion" >
+                    </ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-icon name="calendar-outline" class="color" slot="start"></ion-icon>
+                    <ion-input  labelPlacement="stacked" [clearInput]="true" type="date" required [(ngModel)]="gasto.fecha" >
+                    </ion-input>
+                  </ion-item>
+                </ion-list>
+                
+                <ion-button class="full" color="danger" expand="block">Actualizar</ion-button>
+      
+              </form>
+
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+      </ion-buttons>
+    </div>
+  </ion-list>
+</ion-content>

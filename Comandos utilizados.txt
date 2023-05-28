@@ -1,0 +1,28 @@
+----------Agregar los Guardas en ionic (solo si utiliza angular) se usa el siguiente comando para crear la carpeta correspondiente ----------
+
+ionic g guard guards/auth
+
+
+-----------para generar pdf con  pdf make usamos los siguientes comandos para instalar:------------
+
+npm install pdfmake --save
+
+
+---------para instalar moment usamos el comando:---------------
+
+npm install moment
+
+----------para instalar chart.js version 4.3.0 (generar graficos) utilizamos los comandos:-----------------
+
+npm install --save chart.js
+npm install --save ng2-charts
+npm install -D @types/charts.js
+
+-------------el siguiente comando apartir de la version 3 en adelante segun ya no se utiliza.-------------
+
+npm install ng2-charts@next --save
+
+
+
+------------comando para crear html en imagen -------------
+npm install html-to-image
